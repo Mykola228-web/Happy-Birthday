@@ -1,0 +1,708 @@
+[15.11.2026 20:29] Mykola_228: <!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100b2b">
+<title>Для моєї Зайки ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #09051c;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+/* КОСМІЧНИЙ ФОН */
+
+.space {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(ellipse at 20% 20%, #54256f 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 70%, #263b83 0%, transparent 45%),
+        radial-gradient(ellipse at 50% 50%, #160d36 0%, #070414 100%);
+}
+
+.nebula {
+    position: fixed;
+    inset: -30%;
+    z-index: -1;
+    background:
+        radial-gradient(ellipse at 30% 40%, rgba(176, 75, 255, .15), transparent 35%),
+        radial-gradient(ellipse at 70% 60%, rgba(255, 85, 170, .13), transparent 35%);
+    filter: blur(40px);
+    animation: nebulaMove 15s ease-in-out infinite alternate;
+}
+
+@keyframes nebulaMove {
+    from { transform: translate(-3%, -2%) scale(1); }
+    to { transform: translate(3%, 2%) scale(1.15); }
+}
+
+#stars {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: .2; transform: scale(.7); }
+    to { opacity: 1; transform: scale(1.5); }
+}
+
+.shooting-star {
+    position: fixed;
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, white, transparent);
+    transform: rotate(-35deg);
+    animation: shooting 4s linear infinite;
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes shooting {
+    0% { transform: translate(0, 0) rotate(-35deg); opacity: 0; }
+    10% { opacity: 1; }
+    40% { transform: translate(-400px, 250px) rotate(-35deg); opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* ЗАГАЛЬНІ ЕЛЕМЕНТИ */
+
+section {
+    padding: 90px 20px;
+    text-align: center;
+}
+
+.script {
+    font-family: 'Great Vibes', cursive;
+    color: #ffb6dc;
+}
+
+h2 {
+    font-size: clamp(30px, 7vw, 48px);
+    margin-bottom: 25px;
+    color: #ffd1e9;
+    text-shadow: 0 0 20px rgba(255, 100, 190, .5);
+}
+
+p {
+    line-height: 1.9;
+}
+
+.glow {
+    text-shadow: 0 0 15px #ff77c8, 0 0 35px #a64dff;
+}
+
+/* ПЕРШИЙ ЕКРАН */
+
+#intro {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px 22px;
+}
+
+.intro-card {
+    max-width: 650px;
+    padding: 35px 25px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 30px;
+    background: rgba(255,255,255,.06);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 60px rgba(190, 90, 255, .15);
+    animation: appear 2s ease;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(35px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.intro-card h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(42px, 10vw, 72px);
+    color: #ffc4e5;
+    margin-bottom: 25px;
+}
+
+.intro-card p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #f8e9ff;
+}
+
+.main-button {
+    margin-top: 30px;
+    padding: 16px 30px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #ff75bd, #a66bff);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 0 30px rgba(255, 100, 200, .45);
+    transition: .3s;
+}
+
+.main-button:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 45px rgba(255, 100, 200, .7);
+}
+
+
+#main {
+    display: none;
+    animation: appear 1.5s ease;
+}
+
+#main.visible {
+    display: block;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ФОТО */
+
+.gallery {
+    max-width: 1000px;
+    margin: auto;
+[15.11.2026 20:29] Mykola_228: display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.photo-card {
+    padding: 12px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow: 0 10px 35px rgba(0,0,0,.3);
+    transition: .4s;
+}
+
+.photo-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 30px rgba(255, 110, 200, .3);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+}
+
+.photo-card p {
+    font-size: 13px;
+    margin: 15px 5px 8px;
+    color: #ffd8ed;
+}
+
+/* ДАТА */
+
+.date-card {
+    max-width: 600px;
+    margin: auto;
+    padding: 40px 20px;
+    border-radius: 25px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.15);
+    box-shadow: 0 0 40px rgba(180, 90, 255, .2);
+}
+
+.date {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(40px, 9vw, 65px);
+    color: #ffaddc;
+    margin: 20px 0;
+}
+
+/* ТЕКСТ */
+
+.love-container {
+    max-width: 750px;
+    margin: auto;
+}
+
+.love-card {
+    padding: 28px 25px;
+    margin: 25px 0;
+    border-radius: 22px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(10px);
+    text-align: left;
+    line-height: 2;
+    font-size: 15px;
+    color: #fcecff;
+    transition: .4s;
+}
+
+.love-card:hover {
+    border-color: rgba(255,150,220,.5);
+    transform: translateY(-4px);
+}
+
+/* ОСОБЛИВИЙ НАПИС */
+
+.special {
+    padding: 110px 20px;
+}
+
+.special h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(45px, 11vw, 75px);
+}
+
+.special p {
+    max-width: 650px;
+    margin: auto;
+    color: #f6dafa;
+}
+
+/* ВІДЕО */
+
+.video-box {
+    max-width: 700px;
+    margin: auto;
+    padding: 15px;
+    border-radius: 25px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.15);
+}
+
+.video-box iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 15px;
+}
+
+/* ФІНАЛ */
+
+.final {
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.final h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(55px, 12vw, 90px);
+}
+
+.heart {
+    font-size: 60px;
+    animation: heartbeat 1.3s infinite;
+    margin: 20px;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* СЕРДЕЧКА */
+
+.floating-heart {
+    position: fixed;
+    pointer-events: none;
+    z-index: 100;
+    animation: floatUp 1.5s ease forwards;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(0) scale(1); opacity: 1; }
+    to { transform: translateY(-100px) scale(1.8); opacity: 0; }
+}
+
+footer {
+    padding: 30px;
+    text-align: center;
+    color: #c9a9df;
+    font-size: 12px;
+}
+
+@media(max-width: 600px) {
+    section { padding: 70px 17px; }
+    .photo-card img { height: 260px; }
+    .love-card { padding: 22px 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="space"></div>
+<div class="nebula"></div>
+<div id="stars"></div>
+
+<div class="shooting-star" style="top:15%;left:90%;"></div>
+<div class="shooting-star" style="top:55%;left:70%;animation-delay:3s;"></div>
+
+<!-- ПЕРШИЙ ЕКРАН -->
+
+<section id="intro">
+
+<div class="intro-card">
+
+<h1>З Днем народження, Зайко! ❤️</h1>
+
+<p>
+Зайка, вітаю тебе з днем народження, бажаю тобі всього найкращого,
+щастячка, міцного здоров'я, успіхів, здійснення усіх твоїх мрій,
+любові, щоб все у тебе було добре, щоб твій янгол охоронець
+завжди тебе оберігав, добра тобі, натхнення, благополуччя
+і всього всього самого найкращого тобі малятко ❤️🥰
+</p>
+
+<button class="main-button" id="openButton">
+Відкрити мій сюрприз ❤️
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ОСНОВНИЙ САЙТ -->
+
+<main id="main">
+
+<!-- ОСОБЛИВИЙ НАПИС -->
+
+<section class="special">
+
+<h2>Настю, ти моє найкраще диво ❤️</h2>
+
+<p>
+Серед мільярдів зірок, серед нескінченного Всесвіту
+я безмежно щасливий, що зустрів саме тебе.
+Ти моє сонечко, моя радість і моя найрідніша людина.
+І якби мені довелося обирати знову,
+[15.11.2026 20:29] Mykola_228: я б кожного разу обирав тебе. 🥺❤️
+</p>
+
+</section>
+
+
+<!-- ФОТОГАЛЕРЕЯ -->
+
+<section>
+
+<h2>Наші особливі моменти 📸</h2>
+
+<p style="margin-bottom:35px;color:#e7c9f5;">
+Кожна фотографія — це маленька частинка нашої історії ❤️
+</p>
+
+<div class="gallery">
+
+<!-- ЗАМІНИ photo1.jpg НА СВОЇ ФОТО -->
+
+<div class="photo-card">
+<img src="photo1.jpg" alt="Наш момент">
+<p>Моя наймиліша Зайка ❤️</p>
+</div>
+
+<div class="photo-card">
+<img src="photo2.jpg" alt="Наш момент">
+<p>Твоя усмішка — моє щастя 🥰</p>
+</div>
+
+<div class="photo-card">
+<img src="photo3.jpg" alt="Наш момент">
+<p>Мій найулюбленіший момент</p>
+</div>
+
+<div class="photo-card">
+<img src="photo4.jpg" alt="Наш момент">
+<p>З тобою кожна мить особлива ❤️</p>
+</div>
+
+<div class="photo-card">
+<img src="photo5.jpg" alt="Наш момент">
+<p>Моє маленьке щастячко</p>
+</div>
+
+<div class="photo-card">
+<img src="photo6.jpg" alt="Наш момент">
+<p>Тільки ти і я 🥺</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ВАША ДАТА -->
+
+<section>
+
+<h2>День, з якого почалася наша історія 💞</h2>
+
+<div class="date-card">
+
+<p>Один із найважливіших днів у моєму житті</p>
+
+<div class="date">20 серпня 2026</div>
+
+<p>
+День, коли ми стали ближчими одне до одного.
+День, який назавжди залишиться в моєму серці.
+Я дуже щасливий, що наша історія почалася саме тоді.
+І хочу, щоб попереду в нас було ще безліч
+щасливих днів, спогадів та моментів разом. ❤️
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ВІДЕО -->
+
+<section>
+
+<h2>Трохи казкової романтики 🎬</h2>
+
+<p style="margin-bottom:30px;color:#e7c9f5;">
+Бо наша історія теж особлива, наче справжня казка.
+</p>
+
+<div class="video-box">
+
+<iframe
+src="https://www.youtube.com/embed/1VIZ89FEjYI"
+title="Romantic movie moment"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+
+</div>
+
+<p style="margin-top:20px;font-size:12px;color:#c9a9df;">
+Відео відтворюється через YouTube.
+</p>
+
+</section>
+
+
+<!-- ВЕЛИКЕ ПРИВІТАННЯ -->
+
+<section>
+
+<h2>Трохи слів від мого серця 💌</h2>
+
+<div class="love-container">
+
+<div class="love-card">
+Малятко моє, ти найкраща дівчинка у всьому світі,
+не то що у світі, а у Всесвіті. Ти наймиліша Зайка,
+ти сама-сама прекрасна дівчинка, ти сама розумна дівчинка.
+Я бачу, як ти стараєшся, ти дуже сильно стараєшся для себе і для нас.
+</div>
+
+<div class="love-card">
+Ти єдина дівчина, яка показала мені, що таке справжня любов.
+Ти показала мені, що таке справжня краса, справжнє щастя поруч
+з найкращою і найріднішою людиною. Ти показала, що таке турбота,
+підтримка і тепло.
+</div>
+
+<div class="love-card">
+Ти показала, де насправді мій дім і місце, де мені комфортно.
+І це місце — ти. Тільки ти. Я завжди буду хотіти тільки до тебе,
+завжди тебе підтримувати, любити і бути поруч.
+Навіть тоді, коли буду далеко.
+</div>
+
+<div class="love-card">
+Я дякую тобі за те, що ти у мене є.
+Дякую Долі, дякую Богові за тебе.
+Дякую за твою любов, теплі обійми, солодкі поцілунки,
+підтримку і за те, що ти завжди поруч зі мною.
+</div>
+
+<div class="love-card">
+Поруч з тобою і в твоїх обіймах я завжди відчуваю
+себе дуже спокійно, комфортно і безпечно.
+Я відчуваю, що я саме там, де маю бути.
+Кожен ранок я прокидаюся з думкою про тебе.
+Кожен день, кожну хвилину я думаю про тебе.
+Думаю, як у тебе справи і як ти взагалі.
+</div>
+
+<div class="love-card">
+Я реально дуже сильно хочу, щоб саме з тобою
+в мене все вийшло. Я хочу бути саме з тобою до кінця життя.
+Мені потрібна тільки ти. Я буду старатися бути для тебе найкращим,
+щоб ти завжди почувалася щасливою і комфортно.
+Ти заслуговуєш тільки на найкраще.
+</div>
+
+<div class="love-card">
+Ти величезна молодчинка, велика умнічка і найрозумніша дівчинка.
+У тебе все вийде, я це знаю і я в це вірю.
+Ти найгарніша, найчарівніша, наймиліша, найдобріша,
+найщиріша, найрідніша, найтурботливіша і найулюбленіша
+моя дівчинка.
+</div>
+
+<div class="love-card">
+Я тебе дуже і дуже сильно люблю,
+а ще сильніше кохаю. 🥺🥺🥰🥰❤️❤️❤️
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ФІНАЛ -->
+
+<section class="final">
+
+<div class="heart">❤️</div>
+
+<h2>Люблю тебе, сонечко!</h2>
+
+<p style="color:#f7d9ff;font-size:17px;margin-top:20px;">
+[15.11.2026 20:29] Mykola_228: Ти моє найкраще диво, Настю. 🥺
+</p>
+
+<div class="heart">💗</div>
+
+<p class="script" style="font-size:35px;">
+Назавжди твій ❤️
+</p>
+
+</section>
+
+<footer>
+Зроблено з безмежною любов'ю для моєї Зайки ❤️
+</footer>
+
+</main>
+
+
+<!-- МУЗИКА -->
+
+<audio id="music" loop preload="auto">
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+// СТВОРЕННЯ ЗІРОК
+
+const stars = document.getElementById('stars');
+
+for (let i = 0; i < 180; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 3 + 's';
+    star.style.animationDuration = (2 + Math.random() * 3) + 's';
+
+    const size = Math.random() * 2 + 1;
+    star.style.width = size + 'px';
+    star.style.height = size + 'px';
+
+    stars.appendChild(star);
+}
+
+
+// ВІДКРИТТЯ СЮРПРИЗУ
+
+const button = document.getElementById('openButton');
+const intro = document.getElementById('intro');
+const main = document.getElementById('main');
+const music = document.getElementById('music');
+
+button.addEventListener('click', function() {
+
+    // Відкриваємо сайт незалежно від музики
+
+    intro.classList.add('hidden');
+    main.classList.add('visible');
+
+    window.scrollTo({
+        top: 0,
+        behavior: 'instant'
+    });
+
+    // Запускаємо музику після натискання
+
+    music.play().catch(function(error) {
+        console.log('Музика не запустилася:', error);
+    });
+
+});
+
+
+// СЕРДЕЧКА ПРИ НАТИСКАННІ
+
+document.addEventListener('click', function(e) {
+
+    if (e.target.closest('button')) return;
+
+    const heart = document.createElement('div');
+
+    heart.className = 'floating-heart';
+    heart.innerHTML = ['❤️', '💗', '💕', '✨', '💖'][
+        Math.floor(Math.random() * 5)
+    ];
+
+    heart.style.left = e.clientX + 'px';
+    heart.style.top = e.clientY + 'px';
+    heart.style.fontSize = (15 + Math.random() * 20) + 'px';
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 1500);
+
+});
+
+</script>
+
+</body>
+</html>
