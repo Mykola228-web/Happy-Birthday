@@ -1,0 +1,138 @@
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.space {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+        radial-gradient(ellipse at 20% 20%, #54256f 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 70%, #263b83 0%, transparent 45%),
+        radial-gradient(ellipse at 50% 50%, #160d36 0%, #070414 100%);
+}
+
+.nebula {
+    position: fixed;
+    inset: -30%;
+    z-index: -1;
+    background:
+        radial-gradient(ellipse at 30% 40%, rgba(176, 75, 255, .15), transparent 35%),
+        radial-gradient(ellipse at 70% 60%, rgba(255, 85, 170, .13), transparent 35%);
+    filter: blur(40px);
+    animation: nebulaMove 15s ease-in-out infinite alternate;
+}
+
+@keyframes nebulaMove {
+    from {
+        transform: translate(-3%, -2%) scale(1);
+    }
+
+    to {
+        transform: translate(3%, 2%) scale(1.15);
+    }
+}
+
+#stars {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+    from {
+        opacity: .2;
+        transform: scale(.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+.shooting-star {
+    position: fixed;
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, white, transparent);
+    transform: rotate(-35deg);
+    animation: shooting 4s linear infinite;
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes shooting {
+    0% {
+        transform: translate(0, 0) rotate(-35deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    40% {
+        transform: translate(-400px, 250px) rotate(-35deg);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.heart {
+    font-size: 60px;
+    animation: heartbeat 1.3s infinite;
+    margin: 20px;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.floating-heart {
+    position: fixed;
+    pointer-events: none;
+    z-index: 100;
+    animation: floatUp 1.5s ease forwards;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-100px) scale(1.8);
+        opacity: 0;
+    }
+}
